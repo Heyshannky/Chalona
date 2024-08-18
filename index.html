@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Fun Question</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #ff6f61;
+            font-weight: bold;
+        }
+
+        #question {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            font-size: 1.2em;
+            padding: 15px 25px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            color: white;
+        }
+
+        #noButton {
+            background-color: #ff6f61;
+        }
+
+        #yesButton {
+            background-color: #6bffb0;
+        }
+
+        #noButton:hover {
+            background-color: #e55a50;
+        }
+
+        #yesButton:hover {
+            background-color: #5ed99a;
+        }
+
+        #message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            display: none;
+            color: #444;
+            font-weight: bold;
+        }
+
+        #gifContainer {
+            margin-top: 30px;
+        }
+
+        #gifContainer img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hey, I have a question for you!</h1>
+    <p id="question">Aapne kal btaya nhi? Chloge?</p>
+    
+    <div id="gifContainer">
+        <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjRkNHNnNWRqdDUweXg5b3ZiaWVqOW11NTh5ZWQ4OG1hM3Y4OWdvYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Cute Budu Dubu Dance">
+    </div>
+
+    <div class="button-container">
+        <button id="yesButton" class="button" onclick="redirectToYes()">Yes</button>
+        <button id="noButton" class="button" onclick="playPrank()">No</button>
+    </div>
+    <p id="message"></p>
+
+    <script>
+        let clickCount = 0;
+        const messages = [
+            "Pakka, soch lo? 🤔",
+            "Dekh lo abhi bhi mauka hai 🤔",
+            "Kya itna bura hu me? 😢",
+            "My bad 😔",
+            "Mene to hmesha acha hi socha tha, apke liye 😊",
+            "Last baar sochlo 🙏"
+        ];
+
+        function playPrank() {
+            clickCount++;
+            const noButton = document.getElementById('noButton');
+            const message = document.getElementById('message');
+
+            if (clickCount <= 6) {
+                noButton.style.transform = `scale(${1 - clickCount * 0.1})`;
+                message.style.display = 'block';
+                message.textContent = messages[clickCount - 1];
+            } else {
+                noButton.style.display = 'none';
+                message.style.display = 'none';
+            }
+        }
+
+        function redirectToYes() {
+            window.location.href = 'Yes.html';
+        }
+    </script>
+</body>
+</html>
